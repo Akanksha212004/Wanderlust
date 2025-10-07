@@ -93,10 +93,10 @@ const sessionOptions = {
 };
 
 
-// // Root Route
-// app.get("/", (req, res) => {
-//     res.send("Hi, I am root!");
-// });
+// Root Route
+app.get("/", (req, res) => {
+    res.redirect("/listings");
+});
 
 
 app.use(session(sessionOptions));
