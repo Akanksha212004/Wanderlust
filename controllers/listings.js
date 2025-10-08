@@ -39,6 +39,8 @@ module.exports.showListing = async(req, res) => {
 };
 
 
+
+
 // Create Route
 module.exports.createListing = async(req, res, next) => {
     // if(!req.body.listing){

@@ -97,3 +97,5 @@ router.get("/:id/edit",
 
 
 module.exports = router;
+
+// res.render('listing/show', { listing, currUser: req.user });

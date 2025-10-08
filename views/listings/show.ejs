@@ -103,9 +103,8 @@
                     </div>
 
             <!-- Delete Button (along with the condition ki jis user ne jo review create kiya hai use bas apne review ke liye hi delete button dikhayi de -->
-            <% const currUserId = currUser ? currUser._id.toString() : null; %>
     
-            <% if(currUser && review.author._id.toString() === currUserId) { %>
+            <%  if(currUser && review.author && review.author._id.toString() === currUser._id.toString()) { %>
 
                      <form class="mb-3" method="POST" action="/listings/<%= listing._id%>/reviews/<%= review._id %>?_method=DELETE">
                         <button class="btn btn-sm btn-dark">Delete</button>
