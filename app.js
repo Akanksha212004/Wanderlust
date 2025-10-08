@@ -93,6 +93,7 @@ const sessionOptions = {
 };
 
 
+
 // Root Route
 app.get("/", (req, res) => {
     res.redirect("/listings");
