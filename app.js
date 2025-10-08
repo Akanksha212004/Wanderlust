@@ -99,6 +99,7 @@ app.get("/", (req, res) => {
 });
 
 
+
 app.use(session(sessionOptions));
 //Using flash (#NOTE: Always use 'flash' before your routes)
 app.use(flash());
