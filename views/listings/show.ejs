@@ -46,7 +46,7 @@
     <div class="col-8 offset-3 mb-3">
         <hr>
 
-     <!-- User logged in ho tabhi 'Reviews' add karne ka option hona chahiye -->
+<!-- User logged in ho tabhi 'Reviews' add karne ka option hona chahiye -->
     <% if(currUser) { %>
         <h4>Leave a Review</h4>
         <form action="/listings/<%= listing.id %>/reviews" method="POST" novalidate class="needs-validation">
@@ -101,19 +101,22 @@
                         </p>
 
                     </div>
+                
 
-            <!-- Delete Button (along with the condition ki jis user ne jo review create kiya hai use bas apne review ke liye hi delete button dikhayi de -->
+    <!-- Delete Button (along with the condition ki jis user ne jo review create kiya hai use bas apne review ke liye hi delete button dikhayi de -->
     
-            <% if(currUser && currUser._id.equals(review.author)) { %>
+            <% if(currUser && currUser._id.equals(review.author._id)) { %>
 
                      <form class="mb-3" method="POST" action="/listings/<%= listing._id%>/reviews/<%= review._id %>?_method=DELETE">
                         <button class="btn btn-sm btn-dark">Delete</button>
                      </form>
 
-                <% } %>
+            <% } %>
 
                 </div>
+
             <% } %>
+
             </div>
 
         </div>
