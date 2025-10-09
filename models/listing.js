@@ -1,6 +1,7 @@
 const mongoose = require("mongoose");
 const Schema = mongoose.Schema;  // using 'Schema' variable to get rid of continuous usage of 'mongoose.Schema'
 const Review = require("./review.js");
+const { required } = require("joi");
 
 
 const listingSchema = new Schema({
@@ -36,7 +37,24 @@ const listingSchema = new Schema({
     owner: {
             type: Schema.Types.ObjectId,
             ref: "User"
-        }
+        },
+    category: {
+        type: String,
+        enum: [
+            "Trending",
+            "Rooms",
+            "Iconic cities",
+            "Mountains",
+            "Castles",
+            "Amazing Pools",
+            "Camping",
+            "Farms",
+            "Arctic",
+            "Domes",
+            "Boats"
+        ],
+        required: true,
+    },
 });
 
 

@@ -4,9 +4,16 @@ const Listing = require("../models/listing");
 
 // Index Route
 module.exports.index = async(req, res) => {
-    const allListings = await Listing.find({});
-    res.render("listings/index.ejs", { allListings });
+    const { category } = req.query;    // e.g., /listings?category=Rooms
+    let filter = {};
+    if(category){
+        filter.category = category;
+    }
+    const allListings = await Listing.find(filter);
+    res.render("listings/index.ejs", { allListings, category });
 };
+
+
 
 
 // New Route
