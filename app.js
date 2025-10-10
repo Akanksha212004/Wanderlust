@@ -94,11 +94,6 @@ const sessionOptions = {
 
 
 
-// Root Route
-app.get("/", (req, res) => {
-    res.redirect("/listings");
-});
-
 
 
 app.use(session(sessionOptions));
@@ -122,6 +117,13 @@ app.use((req, res, next) => {
     res.locals.search = "";    // ✅ initialize 'search' for navbar.ejs
     next();
 });
+
+
+// Root Route
+app.get("/", (req, res) => {
+    res.redirect("/listings");
+});
+
 
 
 // Creating a Demo User (to see how Passport actually works)
