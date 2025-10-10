@@ -47,13 +47,15 @@
       </div>
 
       <div class="navbar-nav ms-auto">
-        <form class="d-flex" role="search" action="/listings" method="GET">
+        <form class="d-flex" role="search" action="/listings" method="GET" id="searchForm">
           <input 
             class="form-control me-2 search-inp" 
             type="search" 
             placeholder="Search destinations"
             name="q"
-            value="<%= search || '' %>">
+            value="<%= search || '' %>"
+            id="searchInput"
+            />
           <button class="btn search-btn" type="submit">
             <i class="fa-solid fa-magnifying-glass"></i>
             Search
@@ -75,3 +77,18 @@
     </div>
   </div>
 </nav>
+
+
+<script>
+  const searchInput = document.getElementById("searchInput");
+  const searchForm = document.getElementById("searchForm");
+
+  // Detect when input is cleared
+  searchInput.addEventListener("input", () => {  // "input" event triggers whenever the value inside the input changes
+    if(searchInput.value === ""){
+      // Redirect to home page (or all listings page)
+      window.location.href = "/listings";  // 'window.location.href' is the browser’s current URL
+    }
+  });
+
+</script>
