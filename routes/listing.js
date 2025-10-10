@@ -14,8 +14,6 @@ const upload = multer({ storage });   // Storage on Cloud ('multer' hamaari file
 
 
 
-
-
 // Using 'router.route(path)' for 'Index' and 'Create' route because they direct to same route (root route: "/")
 router.route("/")
     .get(wrapAsync(listingController.index))

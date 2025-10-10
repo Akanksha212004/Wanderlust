@@ -4,13 +4,25 @@ const Listing = require("../models/listing");
 
 // Index Route
 module.exports.index = async(req, res) => {
-    const { category } = req.query;    // e.g., /listings?category=Rooms
+    const { category, q } = req.query;    // e.g., /listings?category=Rooms
     let filter = {};
     if(category){
         filter.category = category;
     }
+
+    // MongoDB queries (Syntax: start with '$')...
+    // $or → MongoDB will match any of the conditions inside the array.
+    // $regex → allows pattern matching (like LIKE in SQL).
+    // $options: "i" → makes it case-insensitive.
+    if(q){
+        filter.$or = [
+            {title: {$regex: q, $options: "i"}},      
+            {location: {$regex: q, $options: "i"}},
+            {category: {$regex: q, $options: "i"}},
+        ];
+    }
     const allListings = await Listing.find(filter);
-    res.render("listings/index.ejs", { allListings, category });
+    res.render("listings/index.ejs", { allListings, category, search:q });
 };
 
 

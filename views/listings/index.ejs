@@ -186,6 +186,13 @@
 
   <div class="container-fluid mt-3">
     <div class="row row-cols-lg-3 row-cols-md-2 row-cols-sm-1 mt-3">
+
+    <% if (allListings.length === 0) { %>
+      <div class="col-12 text-center my-5">
+        <h4>No results found for "<%= search %>" 😕</h4>
+        <a href="/listings" class="btn btn-outline-primary mt-3">Return to Home Page</a>
+      </div>
+    <% } else { %
   
       <% for(let listing of allListings) { %>
       <div class="col mb-4">
@@ -202,6 +209,7 @@
           </div>
         </a>
       </div>
+      <% } %>
     <% } %>
     </div>
   </div>
