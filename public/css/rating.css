@@ -217,9 +217,17 @@
 
 .review-card .card{
   width: 100%;
-  border-radius: 1rem;
+  border-radius: 0.3rem;
+  padding: 1rem;
   border: 1px solid #ddd;
   transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.review-card .card-body{
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;   /* space between texts and button */
+  padding: 1rem;
 }
 
 .review-card .card:hover{
