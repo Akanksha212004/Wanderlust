@@ -19,8 +19,23 @@
 
     <style>
       #filter-toggle{
-        margin: 0.5rem auto;
+        margin: 0.5rem;
         width: 90%;
+        background-color: #fe424d;
+        color: #fff;
+        border: none;
+        border-radius: 25px;
+        padding: 0.4rem 1rem;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 0.5rem;
+        font-weight: 500;
+      }
+
+      #filter-toggle:hover{
+        background-color: #e33d46;
+        color: #fff;
       }
 
       #filters{
@@ -28,7 +43,8 @@
         flex-wrap: wrap;
         overflow-x: auto;            /* allow horizontal scroll */
         padding-bottom: 1rem;
-        align-items: center;
+        align-items: center;    /* Aligns items vertically in the flex container */
+        justify-content: center;    /* Taaki saare icons aur 'Filter' center mein aa jaaye */
         transition: all 0.3s ease-in-out;
         margin-bottom: 1rem;
         opacity: 1;
@@ -84,6 +100,7 @@
         align-items: center;
       }
 
+
     /* Only hide filters on extra small screens if toggle is needed */
     @media (max-width: 768px) {
       #filters {
@@ -105,11 +122,23 @@
         display: flex;
         opacity: 1;
         transform: translateY(0);
+        animation: fadeSlideDown 0.3s ease forwards;
+      }
+
+      @keyframes fadeSlideDown {
+        from{
+          opacity: 0;
+          transform: translateY(-10px);
+        }
+        to{
+          opacity: 1;
+          transform: translateY(0);
+        }
       }
 
       .filter{
         margin-right: 0;
-        text-align: left;
+        text-align: center;
         display: flex;
         align-items: center;
         gap: 0.5rem;
@@ -149,8 +178,9 @@
 
 <!-- Filter Toggle Button (for small screens) -->
 <div class="text-center mt-3 d-md-none">
-  <button id="filter-toggle" class="btn btn-outline-primary">
-    <i class="fa-solid fa-sliders"></i> Filters
+  <button id="filter-toggle" class="d-md-none">
+    <i class="fa-solid fa-sliders"></i> 
+    Filters
   </button>
 </div>
 
