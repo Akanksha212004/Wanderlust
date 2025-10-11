@@ -195,3 +195,60 @@
   -webkit-transition: background-position .7s;
   transition: background-position .7s;
 }
+
+
+/* Reviews Container */
+.reviews-row{
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center; 
+  padding: 0 1rem;   /* left/right padding */
+}
+
+
+/* Review Card */
+.review-card{
+  /* flex: 1 1 calc(50% - 0.5rem);   /* 2 per row with gaps */
+  /* min-width: 250px;   ensures text files */
+  /* box-sizing: border-box; */
+  display: flex;
+  justify-content: center;
+}
+
+.review-card .card{
+  width: 100%;
+  border-radius: 1rem;
+  border: 1px solid #ddd;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.review-card .card:hover{
+  transform: translate(-5px);
+  box-shadow: 0 4px 2px rgba(0, 0, 0, 0.1);
+}
+
+
+/* Mobile responsiveness */
+@media (max-width: 576px){
+  .review-card{
+    flex: 1 1 100%;   /* 1 per row */
+  }
+}
+
+@media (max-width: 768px){
+  .review-card{
+    flex: 1 1 100%;
+    margin: 0.5rem 0;
+  }
+
+  .reviews-row{
+    padding: 0 1rem;
+  }
+}
+
+@media (min-width: 760px) {
+  .review-card{
+    flex: 1 1 calc(50% - 1rem);
+    margin: 0.5rem;
+  }
+}

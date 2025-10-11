@@ -17,7 +17,7 @@
 
             </div>
 
-            <div class="card col-6 offset-3 show-card listing-card">
+            <div class="card col-lg-6 offset-3 col-md-8 offset-md-2 col-10 mx-auto show-card listing-card">
                 <img src="<%= listing.image.url %>" class="card-img-top show-img" alt="listing_image">
                 <div class="card-body">
                     <p class="card-text">Owned By <i><%= listing.owner.username %></i></p>
@@ -33,7 +33,10 @@
 
         <% if(currUser && listing.owner._id.equals(currUser._id)) { %>
             <div class="btns">
-                <a href="/listings/<%=listing._id%>/edit" class="btn btn-dark col-1 offset-3 edit-btn">Edit</a>
+                <a href="/listings/<%=listing._id%>/edit" 
+                    class="btn btn-dark col-5 col-md-2 offset-md-3 edit-btn">
+                    Edit
+                </a>
 
                 <form method="POST" action="/listings/<%= listing._id %>?_method=DELETE">
                     <button class="btn btn-dark offset-5">Delete</button>
@@ -43,7 +46,7 @@
         <% } %>  
 
    
-    <div class="col-8 offset-3 mb-3">
+    <div class="col-lg-8 offset-lg-2 col-md-10 offset-md-1 col-12 max-auto mb-3">
         <hr>
 
 <!-- User logged in ho tabhi 'Reviews' add karne ka option hona chahiye -->
@@ -89,30 +92,29 @@
 
             <p><b>All Reviews</b></p>
 
-            <div class="row">
+            <div class="row reviews-row">
             <% for(review of listing.reviews) { %>
-                <div class="card col-5 mb-3 ms-3"> 
+                <div class="col-lg-5 col-md-6 col-12 review-card mb-4"> 
+                  <div class="card h-100 shadow-sm"> 
                     <div class="card-body">
                         <h5 class="card-title">@<%= review.author.username %></h5>
 
-                        <p class="starability-result card-text" data-rating="<%= review.rating %>">
+                        <p class="starability-result card-text" data-rating="<%= review.rating %>"></p>
 
-                        <p class="card-text"> <%= review.comment %> </p>
-                        </p>
-
+                        <p class="card-text"> <%= review.comment %> </p>   
+                        
+                        <!-- Delete Button (along with the condition ki jis user ne jo review create kiya hai use bas apne review ke liye hi delete button dikhayi de -->
+                        
+                        <% if(currUser && currUser._id.equals(review.author._id)) { %>
+                            
+                            <form method="POST" action="/listings/<%= listing._id%>/reviews/<%= review._id %>?_method=DELETE">
+                                <button class="btn btn-sm btn-dark mt-2">Delete</button>
+                            </form>
+                            
+                        <% } %>
+                            
                     </div>
-                
-
-    <!-- Delete Button (along with the condition ki jis user ne jo review create kiya hai use bas apne review ke liye hi delete button dikhayi de -->
-    
-            <% if(currUser && currUser._id.equals(review.author._id)) { %>
-
-                     <form class="mb-3" method="POST" action="/listings/<%= listing._id%>/reviews/<%= review._id %>?_method=DELETE">
-                        <button class="btn btn-sm btn-dark">Delete</button>
-                     </form>
-
-            <% } %>
-
+                  </div>
                 </div>
 
             <% } %>
